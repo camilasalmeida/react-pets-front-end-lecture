@@ -1,9 +1,7 @@
 // src/App.jsx
 import { useState, useEffect } from 'react'
 import * as petService from './services/petService'
-import PetList from './components/PetList' 
-
-
+import PetList from './components/PetList.jsx';
 
 const App = () => {
   const [petList, setPetList] = useState([])
@@ -25,20 +23,18 @@ fetchPets()                                                // Invoke the functio
     }, [])                                                 // Add an empty dependency array to the `useEffect` hook.
 
 
-
-
-
-
 //------------------------------------------------------------------------------------\\
-  return ( 
+return (
 <> 
-  <h1>Hello World!</h1>
-  </>
+<h1>Hello World! </h1>
+<PetList petList={petList} />
 
+</>
 
-  )
+)
 }
 
 
 export default App;
 
+//<PetList petList={petList} />;

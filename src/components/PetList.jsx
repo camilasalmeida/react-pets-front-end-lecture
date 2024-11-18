@@ -1,9 +1,26 @@
 // src/components/PetList.jsx
 
 const PetList = (props) => {
-    const pets = props.petList.map((pet) => <li key={pet._id}>{pet.name}</li>);
-  
-    return <h1>Pet List</h1>;
-  };
+    const pets = props.petList.foundPetsList?.map((pet) => {
+return (
+    <li key={pet._id}>{pet.name}</li>
+)
+    });
 
-export default PetList
+  console.log(pets);
+
+
+    return (
+        <div>
+          <h1>Pet List</h1>
+         <ul>{pets} </ul> 
+        </div>
+      )
+    }
+
+export default PetList;
+
+
+
+
+

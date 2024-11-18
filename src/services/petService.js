@@ -4,10 +4,10 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/pets`;
 
 const index = async () => {                      // Create the service function that will make a fetch call to the API.
     try {
-        const res = await fetch(BASE_URL)        // Fetch call.
-        return res.json()                            // .json() method to parse the response.
+        const res = await fetch(BASE_URL);        // Fetch call.
+        return res.json();                           // .json() method to parse the response.
     } catch(err) {
-        console.log(err)
+        console.log(err);
     }
 }
 
