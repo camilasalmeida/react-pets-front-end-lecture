@@ -7,6 +7,8 @@ import PetDetail from './components/PetDetail.jsx';
 const App = () => {
   const [petList, setPetList] = useState([])
   const [selected, setSelected] = useState(null)
+  const [isFormOpen, setIsFormOpen] = useState(false)        // The default for it is closed. The form is closed.
+
 
 
 useEffect(() => {                                          // Create a new useEffect.                               
@@ -30,13 +32,24 @@ const updateSelected = (pet) => {                           // (pet)comes from t
 setSelected(pet)
 }
 
+const handleFormView = () => {
+  setIsFormOpen(!isFormOpen)                                // This is commonly done to show or hide something on the page, in this case, to control the visibility of a form.
+}
+
+
 //------------------------------------------------------------------------------------\\
 return (
 <> 
-<PetList petList={petList} updateSelected={updateSelected} />
+<PetList petList={petList} 
+updateSelected={updateSelected} 
+handleFormView={handleFormView}
+isFormOpen={isFormOpen} 
+/>
 <PetDetail selected={selected} />
 </>
 )
 }
+
+
 
 export default App;
