@@ -12,7 +12,6 @@ const index = async () => {                      // Create the service function 
 }
 
 
-
 export { 
     index 
 }

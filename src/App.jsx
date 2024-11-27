@@ -2,9 +2,12 @@
 import { useState, useEffect } from 'react'
 import * as petService from './services/petService'
 import PetList from './components/PetList.jsx';
+import PetDetail from './components/PetDetail.jsx';
 
 const App = () => {
   const [petList, setPetList] = useState([])
+  const [selected, setSelected] = useState(null)
+
 
 useEffect(() => {                                          // Create a new useEffect.                               
     const fetchPets = async () => {                        // Create a new async function.
@@ -23,18 +26,17 @@ fetchPets()                                                // Invoke the functio
     }, [])                                                 // Add an empty dependency array to the `useEffect` hook.
 
 
+const updateSelected = (pet) => {                           // (pet)comes from the PetList component, specifically from the OnClick event handler attached to each pet in the list.
+setSelected(pet)
+}
+
 //------------------------------------------------------------------------------------\\
 return (
 <> 
-<h1>Hello World! </h1>
-<PetList petList={petList} />
-
+<PetList petList={petList} updateSelected={updateSelected} />
+<PetDetail selected={selected} />
 </>
-
 )
 }
 
-
 export default App;
-
-//<PetList petList={petList} />;
