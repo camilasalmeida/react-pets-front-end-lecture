@@ -23,7 +23,7 @@ const handleSubmitForm = (evt) => {
 }};
 
 return (
-    <div> 
+    <div className="form-container"> 
         <form onSubmit={handleSubmitForm}> 
             <label htmlFor="name"> Name </label>
             <input
