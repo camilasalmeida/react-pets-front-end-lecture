@@ -13,6 +13,7 @@ if(!props.selected)
 </div>
 
 <button onClick={() => props.handleFormView(props.selected)}>Edit</button>
+<button onClick={() => props.handleRemovePet(props.selected._id)}>Delete</button>
 </>
 )
 }
