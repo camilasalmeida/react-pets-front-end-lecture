@@ -18,10 +18,9 @@ const PetList = (props) => {
     <button onClick={props.handleFormView}>
         {props.isFormOpen ? 'Close Form' : 'New Pet'}
     </button>
+    
     </div>
   )
 }
-
-
 
 export default PetList;

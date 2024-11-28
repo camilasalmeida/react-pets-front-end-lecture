@@ -1,19 +1,30 @@
 import { useState } from 'react';
 
 const PetForm = (props) => {
-const [formData, setFormData] = useState({                                       // formData state to control the form
+const initialState = {                                       // formData state to control the form
     name: '',
     age: '',
     breed: '',
-})                  
+}
+const [formData, setFormData] = useState(props.selected ? props.selected : initialState)                
 
 const handleChange = (evt) => {                                                  // handleChange function to update formData state 
     setFormData({ ...formData, [evt.target.name] : evt.target.value });          // This is the key part that dynamically updates the value for the form field that the user has interacted with.
 }                                                                                // evt.target.value refers to the current value that the user has typed into the input field.
 
+const handleSubmitForm = (evt) => {
+    evt.preventDefault();
+    if(props.selected) { 
+        props.handleUpdatePet(formData, props.selected._id)
+    } else {
+    //console.log('Form Data Submitted:', formData); // Log the data submitted
+    props.handleAddPet(formData);
+    //setFormData({ name: '', age: '', breed: '' });
+}};
+
 return (
     <div> 
-        <form> 
+        <form onSubmit={handleSubmitForm}> 
             <label htmlFor="name"> Name </label>
             <input
             id="name"
@@ -36,7 +47,7 @@ return (
             value={formData.breed}
             onChange={handleChange}
             />
-            <button type="submit">Add New Pet</button>
+            <button type="submit"> {props.selected ? 'Update Pet' : 'Add New Pet'} </button>
         </form>
     </div>
 )
